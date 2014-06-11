@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CryptoCoins", "CryptoCoins\CryptoCoins.vcxproj", "{7CC3FC5D-CDC0-47D0-B743-010218F2DFA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2F7B8A44-EEA0-4C95-BCD7-96F561CF8F6B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CC3FC5D-CDC0-47D0-B743-010218F2DFA7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CC3FC5D-CDC0-47D0-B743-010218F2DFA7}.Debug|Win32.Build.0 = Debug|Win32
+		{7CC3FC5D-CDC0-47D0-B743-010218F2DFA7}.Release|Win32.ActiveCfg = Release|Win32
+		{7CC3FC5D-CDC0-47D0-B743-010218F2DFA7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
