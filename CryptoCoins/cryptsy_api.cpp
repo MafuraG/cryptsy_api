@@ -37,18 +37,6 @@ cryptsy_api::~cryptsy_api()
 {
 }
 
-//std::wstring cryptsy_api::s2ws(const std::string& s)
-//{
-//	int len;
-//	int slength = (int)s.length() + 1;
-//	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
-//	wchar_t* buf = new wchar_t[len];
-//	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
-//	std::wstring r(buf);
-//	delete[] buf;
-//	return r;
-//}
-
 std::wstring cryptsy_api::s2ws(const std::string& str)
 {	
 	typedef std::codecvt_utf8<wchar_t> convert_typeX;
@@ -73,14 +61,12 @@ std::string cryptsy_api::sign_hash_hmac(std::string msg, std::string secret_key)
 	// The data that we're going to hash
 	const char* data = msg.c_str();
 
-	unsigned char* digest;
+	unsigned char* digest; 
 
-	// Using sha1 hash engine here.
-	// You may use other hash engines. e.g EVP_md5(), EVP_sha224, EVP_sha512, etc
+	// Using sha512 hash engine here	
 	digest = HMAC(EVP_sha512(), key, strlen(key), (unsigned char*)data, strlen(data), NULL, NULL);
 
-	// Be careful of the length of string with the choosen hash engine. SHA1 produces a 20-byte hash value which rendered as 40 characters.
-	// Change the length accordingly with your choosen hash engine
+	// Be careful of the length of string with the choosen hash engine. 
 	const int len = 64;	
 	char mdString[2*len +1];
 	for (int i = 0; i < len; i++)
@@ -169,13 +155,9 @@ void cryptsy_api::get_markets()
 
 	//In order to see the results
 	//Commented out when not needed
-	wofstream myfile(L"C:\\Users\\Mafura\\Dropbox\\cryptsy_price.csv");
-	if (myfile.is_open())
+	wofstream myfile(L"C:\\Users\\Mafurag\\Dropbox\\cryptsy_price.csv");
+	if (myfile.is_open() == false)
 	{
-		//myfile << res_json.serialize().c_str();		
-		//myfile.close();
-	}
-	else {
 		cout << "Unable to open file";
 		return;
 	}
@@ -206,27 +188,16 @@ void cryptsy_api::get_markets()
 			
 			//std::cout << "filling dictionary..."<<endl;
 			try{
-				m.label = _label.as_string();
-				//std::wcout << "m.label ...OK :" <<m.label<< endl;
-				m.marketid = boost::lexical_cast<int>(_marketid.as_string());
-				//std::cout << "m.marketid ...OK" << endl;
-				m.primary_currency_code = _primary_currency_code.as_string();
-				//std::cout << "m.primary_currency_code ...OK" << endl;
-				m.primary_currency_name = _primary_currency_name.as_string();
-				//std::cout << "m.primary_currency_name ...OK" << endl;
-				m.secondary_currency_code = _secondary_currency_code.as_string();
-				//std::cout << "m.secondary_currency_code ...OK" << endl;
-				m.secondary_currency_name = _secondary_currency_name.as_string();
-				//std::cout << "m.secondary_currency_name ...OK" << endl;
-				m.current_volume = boost::lexical_cast<double>(_current_volume.as_string());
-				//std::cout << "m.current_volume ...OK " << m.current_volume<<endl;
-				m.last_trade = boost::lexical_cast<long double>(_last_trade.as_string());
-				//std::cout << "m.last_trade ...OK " <<m .last_trade<<endl;
-				m.high_trade = boost::lexical_cast<double>(_high_trade.as_string());
-				//std::cout << "m.high_trade ...OK " <<m.high_trade<< endl;
-				m.low_trade = boost::lexical_cast<double>(_low_trade.as_string());
-				//std::cout << "m.low_trade ...OK " <<m.low_trade<< endl;
-				//m.created = _created.as_object();
+				m.label = _label.as_string();				
+				m.marketid = boost::lexical_cast<int>(_marketid.as_string());				
+				m.primary_currency_code = _primary_currency_code.as_string();				
+				m.primary_currency_name = _primary_currency_name.as_string();				
+				m.secondary_currency_code = _secondary_currency_code.as_string();				
+				m.secondary_currency_name = _secondary_currency_name.as_string();				
+				m.current_volume = boost::lexical_cast<double>(_current_volume.as_string());				
+				m.last_trade = boost::lexical_cast<long double>(_last_trade.as_string());				
+				m.high_trade = boost::lexical_cast<double>(_high_trade.as_string());				
+				m.low_trade = boost::lexical_cast<double>(_low_trade.as_string());			
 
 				markets[m.label] = m;
 		
@@ -242,19 +213,7 @@ void cryptsy_api::get_markets()
 		}
 	}
 
-	myfile.close();
-
-	/*marketid	Integer value representing a market
-	label	Name for this market, for example: AMC / BTC
-	primary_currency_code	Primary currency code, for example : AMC
-	primary_currency_name	Primary currency name, for example : AmericanCoin
-	secondary_currency_code	Secondary currency code, for example : BTC
-	secondary_currency_name	Secondary currency name, for example : BitCoin
-	current_volume	24 hour trading volume in this market
-	last_trade	Last trade price for this market
-	high_trade	24 hour highest trade price in this market
-	low_trade	24 hour lowest trade price in this market
-	created	Datetime(EST) the market was created*/
+	myfile.close();	
 }
 
 void cryptsy_api::get_winning_market_LTC()
