@@ -285,7 +285,7 @@ void cryptsy_api::test_hash_hmac()
 {
 	cryptsy_api::user_api_key = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //user api key
 	cryptsy_api::user_secret = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";//your secret shhhh
-	std:string user_message = "1dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
+	std::string user_message = "1dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
 	std::string ctrl_digest = "e2a065eb8d3d58321803902f72a525e246ee765c88339796fa6cdab7c66fffd3f427884302598a2f1b60721e0366c795dd82c5fe1b88b5de3aa0dc7951e8b4a3";
 	
 
